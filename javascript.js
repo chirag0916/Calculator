@@ -29,16 +29,16 @@ numTwo = parseInt(numTwo);
   output = add(numOne,numTwo);
   
  }
- else if ( operator ==="-") {
+ else if ( operator === "-") {
   output = subtract(numOne,numTwo);
  }
  else if (operator === "*") {
   output = multiply(numOne,numTwo);
  }
-else if (operator ==="/") {
+else if (operator === "/") {
   output = divide(numOne,numTwo);
   if (output % 1 !== 0){
-    output= output.toFixed(4);
+    output = output.toFixed(4);
   }
 }
 else {
@@ -67,19 +67,15 @@ function updateTopDisplayClear(newText) {
   displayElement.textContent = newText;
 }
 
-
-
-
 function clearDisplay(newText) {
   location.reload();
 }
 
 document.getElementById("one").addEventListener("click", function () {
-  appendTextToDisplay("1");
+  updateTopDisplay("1");
   if (state["action"] === "numOne") {
     state["numOne"] = state["numOne"] + "1";
-    updateTopDisplay("1");
-
+    appendTextToDisplay("1");
   }
   else if (state["action"] === "numTwo"){
     state["numTwo"] = state['numTwo'] + "1";
@@ -93,11 +89,10 @@ document.getElementById("one").addEventListener("click", function () {
 });
 
 document.getElementById("two").addEventListener("click", function () {
-  appendTextToDisplay("2");
+  updateTopDisplay("2");
   if (state["action"] === "numOne") {
     state["numOne"] = state["numOne"] + "2";
-    updateTopDisplay("2");
-
+    appendTextToDisplay("2");
   }
   else if (state["action"] === "numTwo"){
     state["numTwo"] = state['numTwo'] + "2";
@@ -111,11 +106,10 @@ document.getElementById("two").addEventListener("click", function () {
 });
 
 document.getElementById("three").addEventListener("click", function () {
-  appendTextToDisplay("3");
+  updateTopDisplay("3");
   if (state["action"] === "numOne") {
     state["numOne"] = state["numOne"] + "3";
-    updateTopDisplay("3");
-
+    appendTextToDisplay("3");
   }
   else if (state["action"] === "numTwo"){
     state["numTwo"] = state['numTwo'] + "3";
@@ -129,11 +123,10 @@ document.getElementById("three").addEventListener("click", function () {
 });
 
 document.getElementById("four").addEventListener("click", function () {
-  appendTextToDisplay("4");
+  updateTopDisplay("4");
   if (state["action"] === "numOne") {
     state["numOne"] = state["numOne"] + "4";
-    updateTopDisplay("4");
-
+    appendTextToDisplay("4");
   }
   else if (state["action"] === "numTwo"){
     state["numTwo"] = state['numTwo'] + "4";
@@ -147,15 +140,13 @@ document.getElementById("four").addEventListener("click", function () {
 });
 
 document.getElementById("five").addEventListener("click", function () {
-  appendTextToDisplay("5");
+  updateTopDisplay("5");
   if (state["action"] === "numOne") {
     state["numOne"] = state["numOne"] + "5";
-    updateTopDisplay("5");
-
+    appendTextToDisplay("5");
   }
   else if (state["action"] === "numTwo"){
     state["numTwo"] = state['numTwo'] + "5";
-
   }
   else {
     window.alert("bad input");
@@ -165,11 +156,10 @@ document.getElementById("five").addEventListener("click", function () {
 });
 
 document.getElementById("six").addEventListener("click", function () {
-  appendTextToDisplay("6");
+  updateTopDisplay("6");
   if (state["action"] === "numOne") {
     state["numOne"] = state["numOne"] + "6";
-    updateTopDisplay("6");
-
+    appendTextToDisplay("6");
   }
   else if (state["action"] === "numTwo"){
     state["numTwo"] = state['numTwo'] + "6";
@@ -183,11 +173,10 @@ document.getElementById("six").addEventListener("click", function () {
 });
 
 document.getElementById("seven").addEventListener("click", function () {
-  appendTextToDisplay("7");
+  updateTopDisplay("7");
   if (state["action"] === "numOne") {
     state["numOne"] = state["numOne"] + "7";
-    updateTopDisplay("7");
-
+    appendTextToDisplay("7");
   }
   else if (state["action"] === "numTwo"){
     state["numTwo"] = state['numTwo'] + "7";
@@ -201,11 +190,10 @@ document.getElementById("seven").addEventListener("click", function () {
 });
 
 document.getElementById("eight").addEventListener("click", function () {
-  appendTextToDisplay("8");
+  updateTopDisplay("8");
   if (state["action"] === "numOne") {
     state["numOne"] = state["numOne"] + "8";
-    updateTopDisplay("8");
-
+    appendTextToDisplay("8");
   }
   else if (state["action"] === "numTwo"){
     state["numTwo"] = state['numTwo'] + "8";
@@ -217,12 +205,12 @@ document.getElementById("eight").addEventListener("click", function () {
   console.log("end state");
   console.log(state);
 });
+
 document.getElementById("nine").addEventListener("click", function () {
-  appendTextToDisplay("9");
+  updateTopDisplay("9");
   if (state["action"] === "numOne") {
     state["numOne"] = state["numOne"] + "9";
-    updateTopDisplay("9");
-
+    appendTextToDisplay("9");
   }
   else if (state["action"] === "numTwo"){
     state["numTwo"] = state['numTwo'] + "9";
@@ -236,11 +224,10 @@ document.getElementById("nine").addEventListener("click", function () {
 });
 
 document.getElementById("zero").addEventListener("click", function () {
-  appendTextToDisplay("0");
+  updateTopDisplay("0");
   if (state["action"] === "numOne") {
     state["numOne"] = state["numOne"] + "0";
-    updateTopDisplay("0");
-
+    appendTextToDisplay("0");
   }
   else if (state["action"] === "numTwo"){
     state["numTwo"] = state['numTwo'] + "0";
@@ -255,12 +242,12 @@ document.getElementById("zero").addEventListener("click", function () {
 
 document.getElementById("plus").addEventListener("click", function () {
   if (state['action'] === "numTwo") {
-    updateTopDisplayClear(operate(state["operator"], state["numOne"], state["numTwo"]));
+    updateDisplay(operate(state["operator"], state["numOne"], state["numTwo"]));
     state["numOne"] = operate(state["operator"], state["numOne"], state["numTwo"]);
     state["action"] = 'numTwo';
     state["numTwo"] = '';
   }
-  appendTextToDisplay("+");
+  updateTopDisplay("+");
   state["action"] = "operator";
   if (state["action"] === "operator") {
     state["operator"] = "+";
@@ -276,12 +263,12 @@ document.getElementById("plus").addEventListener("click", function () {
 
 document.getElementById("subtract").addEventListener("click", function () {
   if (state['action'] === "numTwo") {
-    updateTopDisplayClear(operate(state["operator"], state["numOne"], state["numTwo"]));
+    updateDisplay(operate(state["operator"], state["numOne"], state["numTwo"]));
     state["numOne"] = operate(state["operator"], state["numOne"], state["numTwo"]);
     state["action"] = 'numTwo';
     state["numTwo"] = '';
   }
-  appendTextToDisplay("-");
+  updateTopDisplay("-");
   state["action"] = "operator";
   if (state["action"] === "operator") {
     state["operator"] = "-";
@@ -297,12 +284,12 @@ document.getElementById("subtract").addEventListener("click", function () {
 
 document.getElementById("multiply").addEventListener("click", function () {
   if (state['action'] === "numTwo") {
-    updateTopDisplayClear(operate(state["operator"], state["numOne"], state["numTwo"]));
+    updateDisplay(operate(state["operator"], state["numOne"], state["numTwo"]));
     state["numOne"] = operate(state["operator"], state["numOne"], state["numTwo"]);
     state["action"] = 'numTwo';
     state["numTwo"] = '';
   }
-  appendTextToDisplay("*");
+  updateTopDisplay("*");
   state["action"] = "operator";
   if (state["action"] === "operator") {
     state["operator"] = "*";
@@ -318,12 +305,12 @@ document.getElementById("multiply").addEventListener("click", function () {
 
 document.getElementById("divide").addEventListener("click", function () {
   if (state['action'] === "numTwo") {
-    updateTopDisplayClear(operate(state["operator"], state["numOne"], state["numTwo"]));
+    updateDisplay(operate(state["operator"], state["numOne"], state["numTwo"]));
     state["numOne"] = operate(state["operator"], state["numOne"], state["numTwo"]);
     state["action"] = 'numTwo';
     state["numTwo"] = '';
   }
-  appendTextToDisplay("/");
+  updateTopDisplay("/");
   state["action"] = "operator";
   if (state["action"] === "operator") {
     state["operator"] = "/";
@@ -343,11 +330,12 @@ document.getElementById("clear").addEventListener("click", function () {
 
 document.getElementById("equal").addEventListener("click", function () {
   updateDisplay(operate(state["operator"], state["numOne"], state["numTwo"]));
-  updateTopDisplayClear(operate(state["operator"], state["numOne"], state["numTwo"]));
+  //updateTopDisplayClear(operate(state["operator"], state["numOne"], state["numTwo"]));
   console.log(state["action"]);
   state["action"] = 'equal';
   if (state["action"] === "equal") {
     state["equal"] = "=";
+    updateTopDisplay("=");
   }
   else {
     window.alert("bad input");
